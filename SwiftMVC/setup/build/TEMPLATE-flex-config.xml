@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<flex-config>
+	<target-player>10.0.2</target-player>
+	<compiler>
+		<debug>false</debug>
+		<keep-generated-actionscript>false</keep-generated-actionscript>
+		<verbose-stacktraces>false</verbose-stacktraces>
+		<optimize>true</optimize>
+		
+		<!-- Specifies the locales for internationalization. -->
+		<locale>
+		    <locale-element>en_US</locale-element>
+		</locale>
+		
+		<define>
+			<name>CONFIG::DEBUG</name>
+			<value>false</value>
+		</define>
+		<define>
+			<name>CONFIG::RELEASE</name>
+			<value>true</value>
+		</define>
+		<define>
+			<name>INFO::VERSION</name>
+			<value>%%VERSION%%</value>
+		</define>
+		<define>
+			<name>BUILD::TIMESTAMP</name>
+			<value>%%TIMESTAMP%%</value>
+		</define>
+	</compiler>
+</flex-config>
