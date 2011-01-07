@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" version="3">
   <includeClasses>
-    <classEntry path="com.devpaul.swiftMVC.SwiftFacade"/>
-    <classEntry path="com.devpaul.swiftmvc.framework.SwiftModel"/>
-    <classEntry path="com.devpaul.swiftmvc.framework.SwiftView"/>
-    <classEntry path="com.devpaul.swiftmvc.injector.IInjector"/>
-    <classEntry path="com.devpaul.swiftmvc.injector.SwiftInjector"/>
-    <classEntry path="com.devpaul.swiftmvc.patterns.command.SwiftMacroCommand"/>
+    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.framework.PureModel"/>
+    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.framework.PureView"/>
+    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.patterns.command.PureMacroCommand"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
