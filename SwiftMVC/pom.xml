@@ -23,7 +23,7 @@
 
 	<groupId>com.devpaul</groupId>
 	<artifactId>SwiftMVC</artifactId>
-	<version>0.2.2</version>
+	<version>0.2.3-SNAPSHOT</version>
 	<packaging>swc</packaging>
 
 	<name>SwiftMVC</name>
