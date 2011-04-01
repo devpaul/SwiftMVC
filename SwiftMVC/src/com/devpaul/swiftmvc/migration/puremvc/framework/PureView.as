@@ -1,5 +1,7 @@
 package com.devpaul.swiftmvc.migration.puremvc.framework
 {
+	import flash.errors.IllegalOperationError;
+	
 	import org.puremvc.as3.multicore.core.View;
 	import org.puremvc.as3.multicore.interfaces.IMediator;
 	import org.puremvc.as3.multicore.interfaces.IView;
@@ -14,6 +16,8 @@ package com.devpaul.swiftmvc.migration.puremvc.framework
 	 */
 	public class PureView extends View implements IView
 	{
+		protected static const REREGISTERED_MEDIATOR:String = "A mediator with the same name is already registered.";
+		
 		public static function getInstance(key:String):PureView
 		{
 			if ( View.instanceMap[ key ] == null ) View.instanceMap[ key ] = new PureView( key );
@@ -30,6 +34,28 @@ package com.devpaul.swiftmvc.migration.puremvc.framework
 		}
 		
 		/**
+		 * Instantiates a <code>IMediator</code>, registers the proxy and returns a copy
+		 * 
+		 * @param clazz a class that implements <code>IMediator</code> and self-assigns a name
+		 * @return a reference to the instantiated proxy
+		 * @throws IllegalOperationError if a mediator by the same name is already registered
+		 */
+		public function registerMediatorClass(clazz:Class):IMediator
+		{
+			var mediator:IMediator = this.injector.instantiate(clazz);
+			
+			if ( mediatorMap[ mediator.getMediatorName() ] == null )
+			{
+				mapMediator(mediator);
+				return mediator;
+			}
+			else
+			{
+				throw new IllegalOperationError(REREGISTERED_MEDIATOR);
+			}
+		}
+		
+		/**
 		 * @inheritdoc
 		 */
 		public override function registerMediator(mediator:IMediator):void
@@ -38,8 +64,7 @@ package com.devpaul.swiftmvc.migration.puremvc.framework
 			if ( mediatorMap[ mediator.getMediatorName() ] != null ) return;
 			
 			this.injector.injectInto(mediator);
-			super.registerMediator(mediator);
-			this.injector.mapValue(this._reflector.getClass(mediator), mediator, mediator.getMediatorName());
+			mapMediator(mediator);
 		}
 		
 		public override function removeMediator(mediatorName:String):IMediator
@@ -55,6 +80,12 @@ package com.devpaul.swiftmvc.migration.puremvc.framework
 		protected function get injector():Injector
 		{
 			return PureFacade.getInstance(this.multitonKey).injector;
+		}
+		
+		protected function mapMediator(mediator:IMediator):void
+		{
+			super.registerMediator(mediator);
+			this.injector.mapValue(this._reflector.getClass(mediator), mediator, mediator.getMediatorName());
 		}
 	}
 }

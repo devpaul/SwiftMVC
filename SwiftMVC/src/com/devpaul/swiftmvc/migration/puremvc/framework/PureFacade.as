@@ -38,6 +38,39 @@ package com.devpaul.swiftmvc.migration.puremvc.framework
 		}
 		
 		/**
+		 * Instantiates a <code>IMediator</code>, registers the proxy and returns a copy
+		 * 
+		 * @param clazz a class that implements <code>IMediator</code> and self-assigns a name
+		 * @return a reference to the instantiated proxy
+		 * @throws IllegalOperationError if a mediator by the same name is already registered
+		 */
+		public function registerMediatorClass(clazz:Class):IMediator
+		{
+			if(view)
+			{
+				return PureView(view).registerMediatorClass(clazz);
+			}
+			
+			return null;
+		}
+		
+		/**
+		 * Instantiates a <code>IProxy</code>, registers the mediator and returns a copy
+		 * 
+		 * @param clazz a class that implements <code>IProxy</code> and self-assigns a name
+		 * @return a reference to the instantiated mediator
+		 */
+		public function registerProxyClass(clazz:Class):IProxy
+		{
+			if(model)
+			{
+				return PureModel(model).registerProxyClass(clazz);
+			}
+			
+			return null;
+		}
+		
+		/**
 		 * Initialize the <code>Injector</code>
 		 * 
 		 * Override this initialization method to pass an injection XML definition

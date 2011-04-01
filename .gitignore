@@ -1,3 +1,5 @@
 .FlexUnitSettings
 FlexUnitApplication.mxml
 bin/
+target/
+libs/

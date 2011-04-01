@@ -32,13 +32,25 @@ package com.devpaul.swiftmvc.migration.puremvc.framework
 		}
 		
 		/**
+		 * Instantiates a <code>IProxy</code>, registers the mediator and returns a copy
+		 * 
+		 * @param clazz a class that implements <code>IProxy</code> and self-assigns a name
+		 * @return a reference to the instantiated mediator
+		 */
+		public function registerProxyClass(clazz:Class):IProxy
+		{
+			var proxy:IProxy = this.injector.instantiate(clazz);
+			mapProxy(proxy);
+			return proxy;
+		}
+		
+		/**
 		 * @inheritdoc
 		 */
 		public override function registerProxy(proxy:IProxy):void
 		{
 			this.injector.injectInto(proxy);
-			super.registerProxy(proxy);
-			this.injector.mapValue(this._reflector.getClass(proxy), proxy, proxy.getProxyName());
+			mapProxy(proxy);
 		}
 		
 		public override function removeProxy(proxyName:String):IProxy
@@ -54,6 +66,12 @@ package com.devpaul.swiftmvc.migration.puremvc.framework
 		protected function get injector():Injector
 		{
 			return PureFacade.getInstance(this.multitonKey).injector;
+		}
+		
+		protected function mapProxy(proxy:IProxy):void
+		{
+			super.registerProxy(proxy);
+			this.injector.mapValue(this._reflector.getClass(proxy), proxy, proxy.getProxyName());
 		}
 	}
 }
