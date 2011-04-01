@@ -1,8 +1,15 @@
 ================================================================================
 CHANGELIST
 ================================================================================
+-- Version 0.2.2
+* Added PureCommand to provide injector to SimpleCommands
+* Added ability to register a mediator or proxy class
+
+-- Version 0.2.1
+* Fixed build version in pom
+
 -- Version 0.2
-Refactored location of PureMVC migration classes
+* Refactored location of PureMVC migration classes
 
 -- Version 0.1
-Initial introduction of SwiftSuspenders integration with PureMVC
+* Initial introduction of SwiftSuspenders integration with PureMVC
