@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
+	<!--
 
-    Copyright 2008 Marvin Herman Froeder
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+		Copyright 2008 Marvin Herman Froeder Licensed under the Apache
+		License, Version 2.0 (the "License"); you may not use this file except
+		in compliance with the License. You may obtain a copy of the License
+		at http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+		applicable law or agreed to in writing, software distributed under the
+		License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+		CONDITIONS OF ANY KIND, either express or implied. See the License for
+		the specific language governing permissions and limitations under the
+		License.
+	-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-        http://www.apache.org/licenses/LICENSE-2.0
+	<parent>
+		<groupId>org.sonatype.flexmojos</groupId>
+		<artifactId>flexmojos-flex-super-pom</artifactId>
+		<version>3.8</version>
+	</parent>
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+	<groupId>com.devpaul</groupId>
+	<artifactId>SwiftMVC</artifactId>
+	<version>0.2.2</version>
+	<packaging>swc</packaging>
 
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	<name>SwiftMVC</name>
+	
+	<properties>
+		<depends.lib.folder>libs</depends.lib.folder>
+	</properties>
 
-  <parent>
-    <groupId>org.sonatype.flexmojos</groupId>
-    <artifactId>flexmojos-flex-super-pom</artifactId>
-    <version>3.8</version>
-  </parent>
-
-  <groupId>com.devpaul</groupId>
-  <artifactId>SwiftMVC</artifactId>
-  <version>0.2.2</version>
-  <packaging>swc</packaging>
-
-  <name>SwiftMVC</name>
-
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <!-- <testSourceDirectory>test</testSourceDirectory> -->
-  </build>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
+	</build>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.puremvc</groupId>
-			<artifactId>PureMVC</artifactId>
+			<artifactId>puremvc-as3-multicore</artifactId>
 			<version>1.0.5</version>
 			<type>swc</type>
 		</dependency>
@@ -50,4 +51,55 @@
 			<type>swc</type>
 		</dependency>
 	</dependencies>
+
+	<profiles>
+		<!-- Update IDE library dependencies -->
+		<profile>
+			<id>fetchdeps</id>
+			<activation>
+				<property>
+					<name>fetchdeps</name>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.puremvc</groupId>
+											<artifactId>puremvc-as3-multicore</artifactId>
+											<version>1.0.5</version>
+											<type>swc</type>
+										</artifactItem>
+										<artifactItem>
+											<groupId>org.swiftsuspenders</groupId>
+											<artifactId>SwiftSuspenders</artifactId>
+											<version>1.6.0</version>
+											<type>swc</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${depends.lib.folder}</outputDirectory>
+									<overWriteReleases>true</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+									<stripVersion>false</stripVersion>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
