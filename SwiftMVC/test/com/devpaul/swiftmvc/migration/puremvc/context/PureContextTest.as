@@ -1,6 +1,7 @@
 package com.devpaul.swiftmvc.migration.puremvc.context
 {
 	import com.devpaul.swiftmvc.migration.puremvc.framework.PureFacade;
+	import com.devpaul.swiftmvc.migration.puremvc.support.events.SendNotificationEvent;
 	
 	import mx.utils.UIDUtil;
 	
@@ -8,7 +9,11 @@ package com.devpaul.swiftmvc.migration.puremvc.context
 	import org.flexunit.asserts.assertNotNull;
 	import org.puremvc.as3.multicore.interfaces.IFacade;
 	import org.puremvc.as3.multicore.patterns.facade.Facade;
+	import org.puremvc.as3.multicore.patterns.observer.Notification;
 	import org.swiftsuspenders.Injector;
+	
+	import test.MockFactory;
+	import test.mocks.puremvc.MockFacade;
 
 	public class PureContextTest
 	{		
@@ -62,6 +67,18 @@ package com.devpaul.swiftmvc.migration.puremvc.context
 						 context.injector.getInstance(Facade, context.name),
 						 context.injector.getInstance(IFacade),
 						 context.injector.getInstance(IFacade, context.name));
+		}
+		
+		[Test]
+		public function testNotificationHandler():void
+		{
+			var facade:MockFacade = MockFactory.createMockFacade();
+			var context:PureContext = new PureContext(anyString, facade);
+			var event:SendNotificationEvent = new SendNotificationEvent(anyString);
+			context.eventBus.dispatchEvent(event);
+			
+			assertEquals(1, facade.notificationStack.length);
+			assertEquals(event.notificationName, Notification(facade.notificationStack[0]).getName());
 		}
 		
 		private function get anyFacade():PureFacade

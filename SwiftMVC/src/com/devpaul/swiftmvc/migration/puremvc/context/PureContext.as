@@ -2,6 +2,7 @@ package com.devpaul.swiftmvc.migration.puremvc.context
 {
 	import com.devpaul.swiftmvc.framework.context.Context;
 	import com.devpaul.swiftmvc.migration.puremvc.framework.PureFacade;
+	import com.devpaul.swiftmvc.migration.puremvc.support.controller.handlers.NotificationHandler;
 	
 	import org.puremvc.as3.multicore.interfaces.IFacade;
 	import org.puremvc.as3.multicore.patterns.facade.Facade;
@@ -39,6 +40,12 @@ package com.devpaul.swiftmvc.migration.puremvc.context
 			this.injector.mapRule(Facade, rule, this.name);
 			this.injector.mapRule(IFacade, rule);
 			this.injector.mapRule(IFacade, rule, this.name);
+		}
+		
+		protected override function initializeFramework():void
+		{
+			var noteHandler:NotificationHandler = this.injector.instantiate(NotificationHandler);
+			noteHandler.watchTarget(this.eventBus);
 		}
 	}
 }

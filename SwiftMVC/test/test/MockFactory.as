@@ -12,9 +12,12 @@ package test
 	import test.mocks.MockPM;
 	import test.mocks.MockVO1;
 	import test.mocks.MockVO2;
+	import test.mocks.puremvc.MockFacade;
 
 	public class MockFactory
 	{
+		public static const DEFAULT_MOCK_FACADE_NAME:String = "defaultMockFacadeName";
+		
 		public static function prepInjector(injector:Injector):Injector
 		{
 			injector.mapValue(String, "dependency1", "strDep1");
@@ -28,14 +31,17 @@ package test
 			return injector;
 		}
 		
-		public static function createMockFacade(name:String):PureFacade
+		public static function createMockFacade(name:String = null):MockFacade
 		{
+			if(!name)
+				name = DEFAULT_MOCK_FACADE_NAME;
+			
 			if(Facade.hasCore(name))
 			{
 				Facade.removeCore(name);
 			}
 			
-			return new PureFacade(name);
+			return new MockFacade(name);
 		}
 		
 		public static function createContext():Context
