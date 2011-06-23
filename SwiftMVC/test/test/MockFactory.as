@@ -1,6 +1,9 @@
 package test
 {
+	import com.devpaul.swiftmvc.framework.context.Context;
 	import com.devpaul.swiftmvc.migration.puremvc.framework.PureFacade;
+	
+	import mx.utils.UIDUtil;
 	
 	import org.puremvc.as3.multicore.patterns.facade.Facade;
 	import org.swiftsuspenders.Injector;
@@ -33,6 +36,11 @@ package test
 			}
 			
 			return new PureFacade(name);
+		}
+		
+		public static function createContext():Context
+		{
+			return new Context(UIDUtil.createUID());
 		}
 	}
 }
