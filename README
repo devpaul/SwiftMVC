@@ -1,6 +1,11 @@
 ================================================================================
 CHANGELIST
 ================================================================================
+-- Version 0.2.3
+* Added Context related support (Context, PureContext, ContextMap)
+* Fixed / updated POM
+* Added a NotificationHandler to the PureContext
+
 -- Version 0.2.2
 * Added PureCommand to provide injector to SimpleCommands
 * Added ability to register a mediator or proxy class
