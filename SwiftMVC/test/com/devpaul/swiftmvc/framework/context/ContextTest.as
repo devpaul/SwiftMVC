@@ -1,5 +1,7 @@
 package com.devpaul.swiftmvc.framework.context
 {
+	import com.devpaul.swiftmvc.framework.invoker.Invoker;
+	
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
@@ -77,6 +79,13 @@ package com.devpaul.swiftmvc.framework.context
 		{
 			assertEquals(this._context, this._context.injector.getInstance(Context), 
 			             this._context.injector.getInstance(Context, this._context.name));
+		}
+		
+		[Test]
+		public function testConstruction_Invoker():void
+		{
+			assertEquals(this._context.invoker, this._context.injector.getInstance(Invoker),
+			             this._context.injector.getInstance(Invoker, this._context.name));
 		}
 		
 		protected function get anyString():String

@@ -1,5 +1,7 @@
 package com.devpaul.swiftmvc.framework.context
 {
+	import com.devpaul.swiftmvc.framework.invoker.Invoker;
+	
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
@@ -7,6 +9,9 @@ package com.devpaul.swiftmvc.framework.context
 	import org.swiftsuspenders.Injector;
 
 	/**
+	 * The Application Context holds the injector and other information necessary for initializing and
+	 * executing the framework.
+	 * 
 	 * @author pshannon
 	 */
 	public class Context
@@ -46,6 +51,11 @@ package com.devpaul.swiftmvc.framework.context
 			return this._injector.getInstance(IEventDispatcher);
 		}
 		
+		public function get invoker():Invoker
+		{
+			return this._injector.getInstance(Invoker);
+		}
+		
 		/**
 		 * The first phase in the initialization sequence instantiates dependencies for
 		 * using the context 
@@ -78,6 +88,10 @@ package com.devpaul.swiftmvc.framework.context
 			// Context dependency
 			rule = this.injector.mapValue(Context, this);
 			this.injector.mapRule(Context, rule, name);
+			
+			// Invoker dependency
+			rule = this.injector.mapSingleton(Invoker);
+			this.injector.mapRule(Invoker, rule, name);
 		}
 		
 		/**
