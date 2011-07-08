@@ -1,6 +1,10 @@
 ================================================================================
 CHANGELIST
 ================================================================================
+-- Version 0.3.0
+* Added a simple meta-data based invoker for commands
+* Added support for process management
+
 -- Version 0.2.3
 * Added Context related support (Context, PureContext, ContextMap)
 * Fixed / updated POM

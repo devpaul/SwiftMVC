@@ -17,7 +17,7 @@
 
 	<groupId>com.devpaul</groupId>
 	<artifactId>swiftmvc</artifactId>
-	<version>0.2.3</version>
+	<version>0.3.0</version>
 	<packaging>swc</packaging>
 
 	<name>swiftmvc Flex</name>
@@ -31,6 +31,11 @@
 				<artifactId>flexmojos-maven-plugin</artifactId>
 				<version>3.9</version>
 				<extensions>true</extensions>
+				<configuration>
+					<keepAs3Metadatas>
+						<keepAs3Metadata>Execute</keepAs3Metadata>
+					</keepAs3Metadatas>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -107,14 +112,17 @@
 			</build>
 		</profile>
 	</profiles>
-	
+
 	<repositories>
 		<repository>
 			<id>swiftmvc</id>
 			<url>http://repo.devpaul.com/maven/</url>
 		</repository>
 
-		<!-- Required for regular plugin use until moved over to Maven central repo. -->
+		<!--
+			Required for regular plugin use until moved over to Maven central
+			repo.
+		-->
 		<repository>
 			<id>flex-mojos-repository</id>
 			<url>http://repository.sonatype.org/content/groups/flexgroup/</url>
