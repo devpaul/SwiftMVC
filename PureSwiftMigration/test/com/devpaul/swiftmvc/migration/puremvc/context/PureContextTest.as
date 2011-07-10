@@ -12,7 +12,7 @@ package com.devpaul.swiftmvc.migration.puremvc.context
 	import org.puremvc.as3.multicore.patterns.observer.Notification;
 	import org.swiftsuspenders.Injector;
 	
-	import test.MockFactory;
+	import test.mocks.MockFactory;
 	import test.mocks.puremvc.MockFacade;
 
 	public class PureContextTest

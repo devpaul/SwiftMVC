@@ -1,4 +1,4 @@
-package com.devpaul.swiftmvc.migration.puremvc.patterns.command
+package com.devpaul.swiftmvc.migration.puremvc.command
 {
 	import com.devpaul.swiftmvc.migration.puremvc.framework.PureFacade;
 	

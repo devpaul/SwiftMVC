@@ -1,4 +1,4 @@
-package test
+package test.mocks
 {
 	import com.devpaul.swiftmvc.framework.context.Context;
 	import com.devpaul.swiftmvc.migration.puremvc.framework.PureFacade;
@@ -8,10 +8,6 @@ package test
 	import org.puremvc.as3.multicore.patterns.facade.Facade;
 	import org.swiftsuspenders.Injector;
 	
-	import test.mocks.MockDM;
-	import test.mocks.MockPM;
-	import test.mocks.MockVO1;
-	import test.mocks.MockVO2;
 	import test.mocks.puremvc.MockFacade;
 
 	public class MockFactory

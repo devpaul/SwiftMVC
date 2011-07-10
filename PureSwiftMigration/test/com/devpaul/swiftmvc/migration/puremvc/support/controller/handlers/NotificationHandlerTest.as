@@ -12,7 +12,7 @@ package com.devpaul.swiftmvc.migration.puremvc.support.controller.handlers
 	import org.puremvc.as3.multicore.interfaces.IFacade;
 	import org.puremvc.as3.multicore.patterns.observer.Notification;
 	
-	import test.MockFactory;
+	import test.mocks.MockFactory;
 	import test.mocks.puremvc.MockFacade;
 
 	public class NotificationHandlerTest

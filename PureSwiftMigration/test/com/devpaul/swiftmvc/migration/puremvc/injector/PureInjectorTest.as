@@ -4,7 +4,7 @@ package com.devpaul.swiftmvc.migration.puremvc.injector
 	
 	import org.swiftsuspenders.Injector;
 	
-	import test.MockFactory;
+	import test.mocks.MockFactory;
 	import test.mocks.MockMediator;
 
 	public class PureInjectorTest

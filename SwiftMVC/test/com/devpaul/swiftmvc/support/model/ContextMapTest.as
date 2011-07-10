@@ -2,15 +2,12 @@ package com.devpaul.swiftmvc.support.model
 {
 	import com.devpaul.swiftmvc.framework.context.Context;
 	
-	import mx.utils.UIDUtil;
-	
 	import org.flexunit.asserts.assertEquals;
 	import org.flexunit.asserts.assertFalse;
-	import org.flexunit.asserts.assertNotNull;
 	import org.flexunit.asserts.assertNull;
 	import org.flexunit.asserts.assertTrue;
 	
-	import test.MockFactory;
+	import test.mocks.MockFactory;
 
 	public class ContextMapTest
 	{		

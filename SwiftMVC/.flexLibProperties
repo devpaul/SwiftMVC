@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" version="3">
   <includeClasses>
-    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.framework.PureModel"/>
-    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.framework.PureView"/>
-    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.patterns.command.PureMacroCommand"/>
     <classEntry path="com.devpaul.swiftmvc.framework.context.ContextTest"/>
     <classEntry path="com.devpaul.swiftmvc.support.model.ContextMap"/>
     <classEntry path="com.devpaul.swiftmvc.support.model.ContextMapTest"/>
     <classEntry path="com.devpaul.swiftmvc.support.events.ExecuteCommandEvent"/>
     <classEntry path="com.devpaul.swiftmvc.support.events.ExecuteCommandEventTest"/>
-    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.context.PureContextTest"/>
-    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.support.events.SendNotificationEvent"/>
-    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.support.events.SendNotificationEventTest"/>
-    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.support.controller.handlers.NotificationHandler"/>
     <classEntry path="com.devpaul.swiftmvc.framework.handlers.IHandler"/>
     <classEntry path="com.devpaul.swiftmvc.migration.puremvc.support.controller.handlers.NotificationHandlerTest"/>
-    <classEntry path="com.devpaul.swiftmvc.migration.puremvc.support.controller.handlers.MockNotificationHandler"/>
-    <classEntry path="test.mocks.puremvc.MockFacade"/>
     <classEntry path="com.devpaul.swiftmvc.framework.invoker.Invoker"/>
     <classEntry path="com.devpaul.swiftmvc.framework.invoker.InvokerTest"/>
     <classEntry path="test.mocks.invoker.MockBasicCommand"/>

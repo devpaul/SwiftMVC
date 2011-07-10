@@ -5,7 +5,7 @@ package com.devpaul.swiftmvc.migration.puremvc.framework
 	import org.puremvc.as3.multicore.patterns.facade.Facade;
 	import org.swiftsuspenders.Injector;
 	
-	import test.MockFactory;
+	import test.mocks.MockFactory;
 	import test.mocks.MockCommand1;
 	import test.mocks.MockCommand2;
 	import test.mocks.MockDM;

@@ -16,13 +16,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.devpaul</groupId>
-	<artifactId>swiftmvc</artifactId>
+	<artifactId>pure-swiftmigration</artifactId>
+	<name>PureMVC migration library</name>
 	<version>0.3.1-SNAPSHOT</version>
 	<packaging>swc</packaging>
 
-	<name>SwiftMVC</name>
 
-	<description>SwiftMVC is a metadata driven MVC framework w/ DI</description>
+	<description>drop-in migration library replacement for PureMVC to provide dependency injection using the SwiftSuspenders framework</description>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>test</testSourceDirectory>
@@ -32,16 +32,18 @@
 				<artifactId>flexmojos-maven-plugin</artifactId>
 				<version>3.9</version>
 				<extensions>true</extensions>
-				<configuration>
-					<keepAs3Metadatas>
-						<keepAs3Metadata>Execute</keepAs3Metadata>
-					</keepAs3Metadatas>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.devpaul</groupId>
+			<artifactId>swiftmvc</artifactId>
+			<version>0.3.1-SNAPSHOT</version>
+			<type>swc</type>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.puremvc</groupId>
 			<artifactId>puremvc-as3-multicore</artifactId>
