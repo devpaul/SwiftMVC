@@ -43,7 +43,7 @@
 			<version>0.3.1-SNAPSHOT</version>
 			<type>swc</type>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.puremvc</groupId>
 			<artifactId>puremvc-as3-multicore</artifactId>
@@ -75,6 +75,39 @@
 	</dependencies>
 
 	<profiles>
+		<profile>
+			<!-- Fetches dependencies for Flash Builder -->
+			<id>fetchdeps</id>
+			<activation>
+				<property>
+					<name>fetchdeps</name>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>copy-dependencies</goal>
+								</goals>
+								<configuration>
+									<includeArtifactIds>SwiftSuspenders,puremvc-as3-multicore</includeArtifactIds>
+									<outputDirectory>libs</outputDirectory>
+									<overWriteReleases>true</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<!--
 				https://docs.sonatype.org/pages/viewpage.action?pageId=2949459
