@@ -50,8 +50,8 @@ package com.devpaul.swiftmvc.framework.process
 		{
 			var ids:Array = [];
 			
-			for each(var id:int in this._idToProcessMap)
-				ids.push(id);
+			for(var id:String in this._idToProcessMap)
+				ids.push(int(id));
 			
 			return ids;
 		}

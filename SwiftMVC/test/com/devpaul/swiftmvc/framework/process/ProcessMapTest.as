@@ -107,17 +107,36 @@ package com.devpaul.swiftmvc.framework.process
 		[Test]
 		public function testNoProcesses_EmptyKeyList():void
 		{
-			assertNotNull(this._map.getRegisteredProcessIds());
-			assertEquals(0, this._map.getRegisteredProcessIds().length);
+			assertProcessIdList([], this._map.getRegisteredProcessIds());
 		}
 		
 		[Test]
 		public function testAddProcess_MatchesKeyList():void
 		{
 			var id:int = this._map.registerProcess(anyObject);
-			assertNotNull(this._map.getRegisteredProcessIds());
-			assertEquals(1, this._map.getRegisteredProcessIds().length);
-			assertEquals(id, this._map.getRegisteredProcessIds()[0]);
+			assertProcessIdList([id], this._map.getRegisteredProcessIds());
+		}
+		
+		[Test]
+		public function testAddTwoProcesses_MatchesKeyList():void
+		{
+			var expectedIds:Array = [
+				this._map.registerProcess(anyObject),
+				this._map.registerProcess(anyObject)];
+			var actualIds:Array = this._map.getRegisteredProcessIds();
+			
+			assertProcessIdList(expectedIds, actualIds);
+		}
+		
+		private function assertProcessIdList(expected:Array, actual:Array):void
+		{
+			assertNotNull(expected);
+			assertNotNull(actual);
+			assertEquals(expected.length, actual.length);
+			expected.sort();
+			actual.sort();
+			for(var i:int = expected.length - 1; i >= 0; --i)
+				assertEquals(expected[i], actual[i]);
 		}
 		
 		[Test]
@@ -125,8 +144,7 @@ package com.devpaul.swiftmvc.framework.process
 		{
 			var id:int = this._map.registerProcess(anyObject);
 			this._map.releaseProcess(id);
-			assertNotNull(this._map.getRegisteredProcessIds());
-			assertEquals(0, this._map.getRegisteredProcessIds().length);
+			assertProcessIdList([], this._map.getRegisteredProcessIds());
 		}
 		
 		private function get anyObject():Object
