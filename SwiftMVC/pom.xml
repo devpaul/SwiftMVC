@@ -21,8 +21,19 @@
 	<packaging>swc</packaging>
 
 	<name>SwiftMVC</name>
-
 	<description>SwiftMVC is a metadata driven MVC framework w/ DI</description>
+	<developers>
+		<developer>
+			<id>devpaul</id>
+			<email>paul@devpaul.com</email>
+			<name>Paul</name>
+			<timezone>-7</timezone>
+			<roles>
+				<role>owner</role>
+			</roles>
+		</developer>
+	</developers>
+
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>test</testSourceDirectory>
@@ -36,19 +47,17 @@
 					<keepAs3Metadatas>
 						<keepAs3Metadata>Execute</keepAs3Metadata>
 					</keepAs3Metadatas>
+					<testRunner>
+						<launcher>
+							<flashplayerCommand>${flashPlayer.command}</flashplayerCommand>
+						</launcher>
+					</testRunner>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.puremvc</groupId>
-			<artifactId>puremvc-as3-multicore</artifactId>
-			<version>1.0.5</version>
-			<type>swc</type>
-		</dependency>
-
 		<dependency>
 			<groupId>org.swiftsuspenders</groupId>
 			<artifactId>SwiftSuspenders</artifactId>
@@ -73,6 +82,39 @@
 	</dependencies>
 
 	<profiles>
+		<profile>
+			<!-- Fetches dependencies for Flash Builder -->
+			<id>fetchdeps</id>
+			<activation>
+				<property>
+					<name>fetchdeps</name>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>copy-dependencies</goal>
+								</goals>
+								<configuration>
+									<includeArtifactIds>SwiftSuspenders</includeArtifactIds>
+									<outputDirectory>libs</outputDirectory>
+									<overWriteReleases>true</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<!--
 				https://docs.sonatype.org/pages/viewpage.action?pageId=2949459
