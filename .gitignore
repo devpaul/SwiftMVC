@@ -4,3 +4,6 @@ FlexUnitApplication.mxml
 bin/
 target/
 libs/
+*.iml
+*.ipr
+*.iws
