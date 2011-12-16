@@ -1,6 +1,11 @@
 ================================================================================
 CHANGELIST
 ================================================================================
+-- Version 0.3.1
+* Added support for piping PureMVC notifications
+* Added basic handler support
+* Fixed an issue w/ ProcessMap.getRegisteredProcessIds() always returning 0
+
 -- Version 0.3.0
 * Added a simple meta-data based invoker for commands
 * Added support for process management
