@@ -5,7 +5,7 @@
 
 	<groupId>com.devpaul</groupId>
 	<artifactId>swiftmvcreactor</artifactId>
-	<version>0.3.1-SNAPSHOT</version>
+	<version>0.3.1</version>
 	<packaging>pom</packaging>
 
 	<name>Build all projects</name>

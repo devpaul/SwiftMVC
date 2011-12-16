@@ -1,13 +1,8 @@
 package com.devpaul.swiftmvc.framework.handlers
 {
-	import com.devpaul.swiftmvc.framework.handlers.actions.IHandlerAction;
-	import com.devpaul.swiftmvc.framework.handlers.actions.RedispatchAction;
-	
-	import flash.events.EventDispatcher;
-	
-	import test.mocks.handlers.MockAction;
+    import test.mocks.handlers.MockAction;
 
-	public class BaseEventHandlerTest
+    public class BaseEventHandlerTest
 	{		
 		protected var handler:BaseEventHandler;
 		
