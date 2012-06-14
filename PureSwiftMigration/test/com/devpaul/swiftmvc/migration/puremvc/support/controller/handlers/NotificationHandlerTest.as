@@ -10,6 +10,8 @@ package com.devpaul.swiftmvc.migration.puremvc.support.controller.handlers {
     import org.puremvc.as3.multicore.interfaces.IFacade;
     import org.puremvc.as3.multicore.patterns.observer.Notification;
 
+    import test.TestUtil;
+
     import test.mocks.MockFactory;
     import test.mocks.puremvc.MockFacade;
 
@@ -31,15 +33,11 @@ package com.devpaul.swiftmvc.migration.puremvc.support.controller.handlers {
             var handler:NotificationHandler = new NotificationHandler(facade);
             var dispatcher:IEventDispatcher = new EventDispatcher();
             handler.watchTarget(dispatcher);
-            var event:NotificationEvent = new NotificationEvent(NotificationEvent.SEND_NOTIFICATION, new Notification(anyString));
+            var event:NotificationEvent = new NotificationEvent(NotificationEvent.SEND_NOTIFICATION, TestUtil.anyString);
             dispatcher.dispatchEvent(event);
 
             assertEquals(1, facade.notificationStack.length);
-            assertEquals(event.notificationName, Notification(facade.notificationStack[0]).getName());
-        }
-
-        private function get anyString():String {
-            return UIDUtil.createUID();
+            assertEquals(event.getName(), Notification(facade.notificationStack[0]).getName());
         }
     }
 }

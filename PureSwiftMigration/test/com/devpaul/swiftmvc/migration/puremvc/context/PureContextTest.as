@@ -13,6 +13,8 @@ package com.devpaul.swiftmvc.migration.puremvc.context {
     import org.puremvc.as3.multicore.patterns.observer.Notification;
     import org.swiftsuspenders.Injector;
 
+    import test.TestUtil;
+
     import test.mocks.MockFactory;
     import test.mocks.puremvc.MockFacade;
 
@@ -60,11 +62,11 @@ package com.devpaul.swiftmvc.migration.puremvc.context {
 
         [Test]
         public function sendNotificationThroughEventBus_notificationHandlerForwardsNotifcationToFacade():void {
-            var event:NotificationEvent = new NotificationEvent(NotificationEvent.SEND_NOTIFICATION, new Notification(anyString));
+            var event:NotificationEvent = new NotificationEvent(NotificationEvent.SEND_NOTIFICATION, TestUtil.anyString);
             context.eventBus.dispatchEvent(event);
 
             assertEquals(1, facade.notificationStack.length);
-            assertEquals(event.notificationName, Notification(facade.notificationStack[0]).getName());
+            assertEquals(event.getName(), Notification(facade.notificationStack[0]).getName());
         }
 
         [Test]
@@ -78,10 +80,6 @@ package com.devpaul.swiftmvc.migration.puremvc.context {
             assertEquals(context.notificationBus,
                          context.injector.getInstance(IEventDispatcher, PureContext.NOTIFICATION_BUS_DEPENDENCY_NAME),
                          context.injector.getInstance(IEventDispatcher, PureContext.NOTIFICATION_BUS_DEPENDENCY_NAME+facade.__name));
-        }
-
-        private function get anyString():String {
-            return UIDUtil.createUID();
         }
     }
 }

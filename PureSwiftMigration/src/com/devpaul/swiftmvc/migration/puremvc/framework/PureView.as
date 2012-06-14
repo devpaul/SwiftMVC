@@ -46,9 +46,14 @@ package com.devpaul.swiftmvc.migration.puremvc.framework {
         private function sendNotificationThruBus(notification:INotification):void {
             var name:String = notification.getName();
             if (name && _notificationBus.hasEventListener(name))
-                _notificationBus.dispatchEvent(new NotificationEvent(name, notification));
+                dispatchNotificationEvent(name, notification);
             if (_notificationBus.hasEventListener(NotificationEvent.SENT_NOTIFICATION))
-                _notificationBus.dispatchEvent(new NotificationEvent(NotificationEvent.SENT_NOTIFICATION, notification));
+                dispatchNotificationEvent(NotificationEvent.SENT_NOTIFICATION, notification);
+        }
+
+        private function dispatchNotificationEvent(type:String, notification:INotification):void {
+            _notificationBus.dispatchEvent(new NotificationEvent(type, notification.getName(), notification.getBody(),
+                                           notification.getType()));
         }
 
         /**
