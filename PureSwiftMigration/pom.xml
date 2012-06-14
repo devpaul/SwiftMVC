@@ -18,7 +18,7 @@
 	<groupId>com.devpaul</groupId>
 	<artifactId>pure-swiftmigration</artifactId>
 	<name>PureMVC migration library</name>
-	<version>0.3.1</version>
+	<version>0.4.0-SNAPSHOT</version>
 	<packaging>swc</packaging>
 
 
@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>com.devpaul</groupId>
 			<artifactId>swiftmvc</artifactId>
-			<version>0.3.1</version>
+			<version>0.4.0-SNAPSHOT</version>
 			<type>swc</type>
 		</dependency>
 
