@@ -20,6 +20,11 @@
         </developer>
     </developers>
 
+    <properties>
+        <flashplayer.folder>${project.build.directory}/flashplayer</flashplayer.folder>
+        <system.os>linux</system.os>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -28,6 +33,7 @@
                 <version>3.9</version>
                 <extensions>true</extensions>
                 <configuration>
+                    <storepass></storepass>
                     <warnings>
                         <noConstructor>false</noConstructor>
                     </warnings>
@@ -86,6 +92,27 @@
                 <system.os>linux</system.os>
                 <flashplayer.executable>flashplayer</flashplayer.executable>
             </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>process-test-resources</phase>
+                                <configuration>
+                                    <tasks>
+                                        <echo>${flashplayer.folder}/${flashplayer.executable}</echo>
+                                        <chmod file="${flashplayer.folder}/${flashplayer.executable}" perm="755"/>
+                                    </tasks>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
             <id>win</id>
@@ -101,10 +128,6 @@
         </profile>
         <profile>
             <id>player</id>
-            <properties>
-                <flashplayer.folder>${project.build.directory}/flashplayer</flashplayer.folder>
-                <system.os>linux</system.os>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -168,45 +191,6 @@
                         </executions>
                     </plugin>
                 </plugins>
-            </build>
-        </profile>
-        <profile>
-            <!--
-                https://docs.sonatype.org/pages/viewpage.action?pageId=2949459
-            -->
-            <id>m2e</id>
-            <activation>
-                <property>
-                    <name>m2e.version</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.maven.ide.eclipse</groupId>
-                        <artifactId>lifecycle-mapping</artifactId>
-                        <version>0.9.9-SNAPSHOT</version>
-                        <configuration>
-                            <mappingId>customizable</mappingId>
-                            <configurators>
-                                <configurator
-                                        id='org.maven.ide.eclipse.configuration.flex.configurator'/>
-                            </configurators>
-                            <mojoExecutions>
-                                <mojoExecution>org.apache.maven.plugins:maven-resources-plugin::</mojoExecution>
-                            </mojoExecutions>
-                        </configuration>
-                    </plugin>
-                </plugins>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-resources-plugin</artifactId>
-                            <version>2.4</version>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
             </build>
         </profile>
     </profiles>
