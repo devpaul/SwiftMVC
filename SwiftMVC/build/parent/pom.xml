@@ -25,7 +25,7 @@
             <id>mac</id>
             <activation>
                 <os>
-                    <name>mac</name>
+                    <family>mac</family>
                 </os>
             </activation>
             <properties>
@@ -37,7 +37,7 @@
             <id>linux</id>
             <activation>
                 <os>
-                    <name>unix</name>
+                    <family>unix</family>
                 </os>
             </activation>
             <properties>
@@ -61,6 +61,7 @@
             <id>player</id>
             <properties>
                 <flashplayer.folder>${project.build.directory}/flashplayer</flashplayer.folder>
+                <system.os>linux</system.os>
             </properties>
             <build>
                 <plugins>
