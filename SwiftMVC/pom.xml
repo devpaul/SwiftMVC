@@ -18,24 +18,6 @@
     <build>
         <sourceDirectory>src</sourceDirectory>
         <testSourceDirectory>test</testSourceDirectory>
-        <plugins>
-            <plugin>
-                <groupId>org.sonatype.flexmojos</groupId>
-                <artifactId>flexmojos-maven-plugin</artifactId>
-                <version>3.9</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <keepAs3Metadatas>
-                        <keepAs3Metadata>Execute</keepAs3Metadata>
-                    </keepAs3Metadatas>
-                    <testRunner>
-                        <launcher>
-                            <flashplayerCommand>${flashPlayer.command}</flashplayerCommand>
-                        </launcher>
-                    </testRunner>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
     <dependencies>
@@ -44,20 +26,7 @@
             <artifactId>SwiftSuspenders</artifactId>
             <version>1.6.0</version>
             <type>swc</type>
-        </dependency>
-        <dependency>
-            <groupId>com.adobe.flex.framework</groupId>
-            <artifactId>flex-framework</artifactId>
-            <version>3.2.0.3958</version>
-            <type>pom</type>
-        </dependency>
-
-        <dependency>
-            <groupId>com.adobe.flexunit</groupId>
-            <artifactId>flexunit</artifactId>
-            <version>4.0-rc-1</version>
-            <type>swc</type>
-            <scope>test</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>

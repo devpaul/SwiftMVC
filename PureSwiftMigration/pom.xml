@@ -16,17 +16,10 @@
     <description>drop-in migration library replacement for PureMVC to provide dependency injection using the
         SwiftSuspenders framework
     </description>
+
     <build>
         <sourceDirectory>src</sourceDirectory>
         <testSourceDirectory>test</testSourceDirectory>
-        <plugins>
-            <plugin>
-                <groupId>org.sonatype.flexmojos</groupId>
-                <artifactId>flexmojos-maven-plugin</artifactId>
-                <version>3.9</version>
-                <extensions>true</extensions>
-            </plugin>
-        </plugins>
     </build>
 
     <dependencies>
@@ -35,6 +28,7 @@
             <artifactId>swiftmvc</artifactId>
             <version>0.4.0-SNAPSHOT</version>
             <type>swc</type>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -42,6 +36,7 @@
             <artifactId>puremvc-as3-multicore</artifactId>
             <version>1.0.5</version>
             <type>swc</type>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -49,21 +44,7 @@
             <artifactId>SwiftSuspenders</artifactId>
             <version>1.6.0</version>
             <type>swc</type>
-        </dependency>
-
-        <dependency>
-            <groupId>com.adobe.flex.framework</groupId>
-            <artifactId>flex-framework</artifactId>
-            <version>3.2.0.3958</version>
-            <type>pom</type>
-        </dependency>
-
-        <dependency>
-            <groupId>com.adobe.flexunit</groupId>
-            <artifactId>flexunit</artifactId>
-            <version>4.0-rc-1</version>
-            <type>swc</type>
-            <scope>test</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>
